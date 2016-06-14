@@ -52,7 +52,7 @@ namespace CryptSharp
 		protected static byte[] GenerateSaltBytes(int saltLength)
 		{
 			Helper.CheckRange("saltLength", saltLength, 0, int.MaxValue);
-			var rng = new RNGCryptoServiceProvider();
+			var rng = RandomNumberGenerator.Create();
 			var salt = new byte[saltLength];
 			rng.GetBytes(salt);
 			return salt;

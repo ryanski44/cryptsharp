@@ -124,7 +124,7 @@ namespace CryptSharp.Utility
 			Thread[] threads = new Thread[threadCount - 1];
 			for (int i = 0; i < threads.Length; i++)
 			{
-				(threads[i] = new Thread(workerThread, 8192)).Start();
+				(threads[i] = new Thread(workerThread)).Start();
 			}
 			workerThread();
 			for (int i = 0; i < threads.Length; i++)

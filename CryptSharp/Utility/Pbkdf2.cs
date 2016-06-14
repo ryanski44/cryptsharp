@@ -119,12 +119,16 @@ namespace CryptSharp.Utility
 			ReopenStream();
 		}
 
-		public override void Close()
-		{
-			Clear(_key);
-			Clear(_saltBuf);
-			Clear(_block);
-		}
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing)
+            {
+                Clear(_key);
+                Clear(_saltBuf);
+                Clear(_block);
+            }
+            base.Dispose(disposing);
+        }
 
 		private void ComputeBlock(uint pos)
 		{
